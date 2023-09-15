@@ -51,11 +51,7 @@ public final class Main {
         .addListener(
                 (FutureListener<List<InetAddress>>) future -> {
                     if (future.isSuccess()) {
-                        for (InetAddress adder : future.getNow()) {
-                            if (adder instanceof Inet6Address) {
-                                System.out.println(adder.getHostAddress());
-                            }
-                        }
+                        System.out.println(future.getNow().get(0).getHostAddress());
                     }
                 });
   }
